@@ -848,7 +848,425 @@ nav {
         gap: 1.5rem;
     }
     
+}
+
+
+
+/* Games Section - MOVE THIS OUTSIDE OF MEDIA QUERIES */
+.games {
+    padding: 5rem 2rem;
+    background: var(--bg-white);
+}
+
+.games h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.games-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.featured-game {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .featured-game {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.game-info {
+    margin-bottom: 2rem;
+}
+
+.game-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.game-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.game-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.difficulty-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-light);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.difficulty-level {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), #93C5FD);
+    border-radius: 4px;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--bg-light);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+/* Game Embed */
+.game-embed {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+[data-theme="dark"] .game-embed {
+    background: var(--bg-light);
+}
+
+.puzzle-wrapper {
+    text-align: center;
+}
+
+/* Puzzle Grid - FIXED */
+.puzzle-grid {
+    display: inline-grid !important;
+    grid-template-columns: repeat(4, 75px) !important;
+    grid-template-rows: repeat(4, 75px) !important;
+    gap: 2px;
+    background: rgba(91, 155, 213, 0.15);
+    padding: 2px;
+    border-radius: 12px;
+    margin: 0 auto 1.5rem;
+    width: max-content;
+}
+
+/* Puzzle Tiles */
+.puzzle-tile {
+    width: 75px !important;
+    height: 75px !important;
+    background: white;
+    border: 1px solid rgba(91, 155, 213, 0.2);
+    border-radius: 8px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 !important;
+}
+
+[data-theme="dark"] .puzzle-tile {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.puzzle-tile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: #f0f9ff;
+}
+
+[data-theme="dark"] .puzzle-tile:hover {
+    background: var(--bg-light);
+}
+
+.puzzle-tile.empty {
+    background: rgba(91, 155, 213, 0.05) !important;
+    border: 2px dashed rgba(91, 155, 213, 0.2) !important;
+    cursor: default;
+    box-shadow: none;
+}
+
+.puzzle-tile.empty:hover {
+    transform: none !important;
+    background: rgba(91, 155, 213, 0.05) !important;
+}
+
+/* Puzzle Controls */
+.puzzle-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.puzzle-btn {
+    padding: 0.5rem 1.25rem;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.puzzle-btn:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+}
+
+/* Puzzle Stats */
+.puzzle-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.puzzle-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .puzzle-stat {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.puzzle-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.puzzle-stat-value {
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 1rem;
+}
+
+/* Responsive - THIS SHOULD BE AT THE END, AFTER ALL MAIN STYLES */
+@media (max-width: 750px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1,
+    .gradient-name {
+        font-size: 2.5rem;
+    }
+    
+    .about-content,
+    .contact-container,
+    .skills-columns {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
     .nav-links a:not(:last-child) {
         display: none;
     }
 }
+
+@media (max-width: 500px) {
+    .puzzle-grid {
+        grid-template-columns: repeat(4, 65px) !important;
+        grid-template-rows: repeat(4, 65px) !important;
+    }
+    
+    .puzzle-tile {
+        width: 65px !important;
+        height: 65px !important;
+        font-size: 20px !important;
+    }
+    
+    .game-stats {
+        flex-direction: column;
+    }
+}
+
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    margin: 3px 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 2px;
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--bg-white);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 80px 30px 30px;
+        gap: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+    }
+    
+    [data-theme="dark"] .nav-links {
+        background: var(--bg-white);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        width: 100%;
+    }
+    
+    .nav-links a {
+        font-size: 1.1rem;
+        width: 100%;
+        display: block;
+        padding: 10px 0;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+        padding-left: 10px;
+    }
+    
+    /* Show all nav items in mobile menu */
+    .nav-links a:not(:last-child) {
+        display: block !important;
+    }
+    
+    /* Theme toggle in mobile menu */
+    .theme-toggle {
+        margin-top: 20px;
+    }
+}
+
+/* Overlay for mobile menu */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Prevent scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Slide in animation for menu items */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.nav-links.active li {
+    animation: slideIn 0.4s ease forwards;
+}
+
+.nav-links.active li:nth-child(1) { animation-delay: 0.1s; }
+.nav-links.active li:nth-child(2) { animation-delay: 0.15s; }
+.nav-links.active li:nth-child(3) { animation-delay: 0.2s; }
+.nav-links.active li:nth-child(4) { animation-delay: 0.25s; }
+.nav-links.active li:nth-child(5) { animation-delay: 0.3s; }
+.nav-links.active li:nth-child(6) { animation-delay: 0.35s; }
