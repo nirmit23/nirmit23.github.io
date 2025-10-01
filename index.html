@@ -5,40 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nirmit Shah - Software Engineer</title>
     <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Nirmit</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li>
-                    <div class="theme-toggle" onclick="toggleTheme()">
-                        <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                        <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </div>
-                </li>
-            </ul>
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">Nirmit</div>
+        
+        <!-- Hamburger Menu Button -->
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </nav>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active" onclick="closeMenu()">Home</a></li>
+            <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+            <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+            <li><a href="#games" onclick="closeMenu()">Games</a></li>
+            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            <li>
+                <div class="theme-toggle" onclick="toggleTheme()">
+                    <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <!-- Hero Section -->
@@ -411,6 +419,74 @@
             </div>
         </div>
     </section>
+    <!-- Games Section -->
+<!-- Games Section -->
+<section id="games" class="games">
+    <div class="section-container">
+        <h2>Interactive Games</h2>
+        <p class="games-subtitle">
+            Take a break and challenge yourself with this interactive puzzle I've built. 
+            Test your problem-solving skills!
+        </p>
+
+        <div class="games-showcase">
+            <!-- Featured Game -->
+            <div class="featured-game">
+                <div class="game-info">
+                    <h3 class="game-title">
+                        <span style="color: var(--primary-blue);">🎮</span>
+                        Sliding Number Puzzle
+                    </h3>
+                    <p class="game-description">
+                        A classic 15-puzzle game. Arrange numbers 1-15 in order by sliding tiles 
+                        into the empty space. How fast can you solve it?
+                    </p>
+                    
+                    <div class="game-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Difficulty:</span>
+                            <div class="difficulty-bar">
+                                <div class="difficulty-level" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Tech Stack:</span>
+                            <div class="tech-tags">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Puzzle Game Container -->
+                <div class="game-embed">
+                    <div class="puzzle-wrapper">
+                        <div class="puzzle-grid" id="puzzleGrid"></div>
+                        
+                        <div class="puzzle-controls">
+                            <button class="puzzle-btn" onclick="shufflePuzzle()">🔀 Shuffle</button>
+                            <button class="puzzle-btn" onclick="resetPuzzle()">🔄 Reset</button>
+                            <button class="puzzle-btn" onclick="showHint()">💡 Hint</button>
+                        </div>
+
+                        <div class="puzzle-stats">
+                            <div class="puzzle-stat">
+                                <span class="puzzle-stat-label">Moves:</span>
+                                <span class="puzzle-stat-value" id="moves">0</span>
+                            </div>
+                            <div class="puzzle-stat">
+                                <span class="puzzle-stat-label">Time:</span>
+                                <span class="puzzle-stat-value" id="timer">00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
