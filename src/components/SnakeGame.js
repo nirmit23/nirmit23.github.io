@@ -4,6 +4,7 @@ import './SnakeGame.css';
 
 export default function SnakeGame() {
   const canvasRef = useRef(null);
+  const touchStartRef = useRef({ x: 0, y: 0 });
   const [snake, setSnake] = useState([[8, 8]]);
   const [food, setFood] = useState([12, 12]);
   const [direction, setDirection] = useState('RIGHT');
@@ -42,6 +43,50 @@ export default function SnakeGame() {
     setScore(0);
     setIsPaused(false);
     setGameStarted(false);
+  };
+
+  // Touch event handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY
+    };
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!gameStarted || isPaused || gameOver) return;
+
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+    
+    const minSwipeDistance = 30; // Minimum swipe distance in pixels
+
+    // Determine if swipe is more horizontal or vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX > 0) {
+          // Swipe right
+          setDirection(prev => prev !== 'LEFT' ? 'RIGHT' : prev);
+        } else {
+          // Swipe left
+          setDirection(prev => prev !== 'RIGHT' ? 'LEFT' : prev);
+        }
+      }
+    } else {
+      // Vertical swipe
+      if (Math.abs(deltaY) > minSwipeDistance) {
+        if (deltaY > 0) {
+          // Swipe down
+          setDirection(prev => prev !== 'UP' ? 'DOWN' : prev);
+        } else {
+          // Swipe up
+          setDirection(prev => prev !== 'DOWN' ? 'UP' : prev);
+        }
+      }
+    }
   };
 
   const handleKeyPress = useCallback((e) => {
@@ -111,13 +156,11 @@ export default function SnakeGame() {
             newHead = head;
         }
 
-        // Check wall collision
         if (newHead[0] < 0 || newHead[0] >= gridSize || newHead[1] < 0 || newHead[1] >= gridSize) {
           setGameOver(true);
           return prevSnake;
         }
 
-        // Check self collision
         if (prevSnake.some(segment => segment[0] === newHead[0] && segment[1] === newHead[1])) {
           setGameOver(true);
           return prevSnake;
@@ -125,7 +168,6 @@ export default function SnakeGame() {
 
         const newSnake = [newHead, ...prevSnake];
 
-        // Check food collision
         if (newHead[0] === food[0] && newHead[1] === food[1]) {
           setScore(prev => {
             const newScore = prev + 10;
@@ -155,7 +197,6 @@ export default function SnakeGame() {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw grid
     ctx.strokeStyle = 'rgba(91, 155, 213, 0.1)';
     ctx.lineWidth = 1;
     for (let i = 0; i <= gridSize; i++) {
@@ -169,7 +210,6 @@ export default function SnakeGame() {
       ctx.stroke();
     }
 
-    // Draw food
     ctx.fillStyle = '#e74c3c';
     ctx.beginPath();
     ctx.arc(
@@ -181,17 +221,14 @@ export default function SnakeGame() {
     );
     ctx.fill();
 
-    // Draw snake with distinct head and tail
     snake.forEach((segment, index) => {
       const x = segment[0] * cellSize;
       const y = segment[1] * cellSize;
 
       if (index === 0) {
-        // Draw head
         ctx.fillStyle = '#5B9BD5';
         ctx.fillRect(x + 1, y + 1, cellSize - 2, cellSize - 2);
         
-        // Draw eyes based on direction
         ctx.fillStyle = '#ffffff';
         let eye1X, eye1Y, eye2X, eye2Y;
         
@@ -235,13 +272,11 @@ export default function SnakeGame() {
         ctx.fill();
         
       } else if (index === snake.length - 1) {
-        // Draw tail - smaller and tapered
         ctx.fillStyle = '#4A8BC4';
         const tailSize = cellSize - 6;
         const offset = 3;
         ctx.fillRect(x + offset, y + offset, tailSize, tailSize);
         
-        // Add rounded tip to tail
         ctx.beginPath();
         ctx.arc(
           x + cellSize / 2,
@@ -252,7 +287,6 @@ export default function SnakeGame() {
         );
         ctx.fill();
       } else {
-        // Draw body segments with gradient effect
         const gradient = ctx.createLinearGradient(x, y, x + cellSize, y + cellSize);
         gradient.addColorStop(0, '#93C5FD');
         gradient.addColorStop(1, '#5B9BD5');
@@ -275,7 +309,6 @@ export default function SnakeGame() {
   return (
     <div className="snake-game-wrapper">
       <div className="snake-game-container">
-        {/* Header */}
         <div className="snake-header">
           <div className="snake-scores">
             <div className="snake-score-card">
@@ -289,8 +322,11 @@ export default function SnakeGame() {
           </div>
         </div>
 
-        {/* Game Canvas */}
-        <div className="snake-canvas-wrapper">
+        <div 
+          className="snake-canvas-wrapper"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <canvas
             ref={canvasRef}
             width={gridSize * cellSize}
@@ -302,7 +338,8 @@ export default function SnakeGame() {
             <div className="snake-overlay">
               <div className="overlay-content">
                 <h3>Snake Game</h3>
-                <p>Use arrow keys to control the snake</p>
+                <p>Swipe to control on mobile</p>
+                <p>Arrow keys on desktop</p>
                 <button onClick={startGame} className="start-btn">
                   Start Game
                 </button>
@@ -314,7 +351,7 @@ export default function SnakeGame() {
             <div className="snake-overlay">
               <div className="overlay-content">
                 <h3>Paused</h3>
-                <p>Press Space or click Play to continue</p>
+                <p>Tap Play to continue</p>
               </div>
             </div>
           )}
@@ -335,7 +372,6 @@ export default function SnakeGame() {
           )}
         </div>
 
-        {/* Controls */}
         <div className="snake-controls">
           <button
             onClick={togglePause}
@@ -351,10 +387,10 @@ export default function SnakeGame() {
           </button>
         </div>
 
-        {/* Instructions */}
         <div className="snake-instructions">
-          <p><strong>Controls:</strong> Arrow Keys to move • Space to Pause/Resume</p>
-          <p><strong>Goal:</strong> Eat the red food to grow and score points!</p>
+          <p><strong>Desktop:</strong> Arrow Keys • Space to Pause</p>
+          <p><strong>Mobile:</strong> Swipe Up/Down/Left/Right</p>
+          <p><strong>Goal:</strong> Eat the red food to grow!</p>
         </div>
       </div>
     </div>
