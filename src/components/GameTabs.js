@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TicTacToe from './TicTacToe';
 import SlidingPuzzle from './SlidingPuzzle';
+import SnakeGame from './SnakeGame';
 import './GameTabs.css';
 
 export default function GameTabs() {
@@ -14,7 +15,7 @@ export default function GameTabs() {
           onClick={() => setActiveTab('puzzle')}
         >
           <span className="tab-icon">🎮</span>
-          <span className="tab-text">Sliding Puzzle</span>
+          <span className="tab-text">Puzzle</span>
         </button>
         <button
           className={`tab-button ${activeTab === 'tictactoe' ? 'active' : ''}`}
@@ -22,6 +23,13 @@ export default function GameTabs() {
         >
           <span className="tab-icon">⭕</span>
           <span className="tab-text">Tic Tac Toe</span>
+        </button>
+        <button
+          className={`tab-button ${activeTab === 'snake' ? 'active' : ''}`}
+          onClick={() => setActiveTab('snake')}
+        >
+          <span className="tab-icon">🐍</span>
+          <span className="tab-text">Snake</span>
         </button>
       </div>
 
@@ -37,7 +45,6 @@ export default function GameTabs() {
                 <div className="tech-tags-compact">
                   <span className="tech-tag">React</span>
                   <span className="tech-tag">CSS3</span>
-                  <span className="tech-tag">JavaScript</span>
                 </div>
               </div>
             </div>
@@ -58,12 +65,31 @@ export default function GameTabs() {
                 <div className="tech-tags-compact">
                   <span className="tech-tag">React</span>
                   <span className="tech-tag">Minimax AI</span>
-                  <span className="tech-tag">JavaScript</span>
                 </div>
               </div>
             </div>
             <div className="game-embed">
               <TicTacToe />
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'snake' && (
+          <div className="tab-panel">
+            <div className="game-info-compact">
+              <p className="game-description-compact">
+                Classic snake game - eat food to grow and avoid hitting walls or yourself!
+              </p>
+              <div className="game-meta">
+                <span className="difficulty-badge">Difficulty: Medium</span>
+                <div className="tech-tags-compact">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">Canvas API</span>
+                </div>
+              </div>
+            </div>
+            <div className="game-embed">
+              <SnakeGame />
             </div>
           </div>
         )}
