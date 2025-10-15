@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { trackContactClick } from '../utils/analytics';
 const contactLinks = [
   {
     title: 'Email',
@@ -45,6 +45,7 @@ export default function Contact() {
             <a
               key={index}
               href={contact.href}
+  onClick={() => trackContactClick(contact.title)}
               target={contact.href.startsWith('http') ? '_blank' : undefined}
               rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               className="contact-card"

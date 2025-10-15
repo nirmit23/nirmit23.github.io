@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { trackProjectClick } from '../utils/analytics';
 const projectsData = [
   {
     title: 'Boston-Town-Platform',
@@ -36,6 +36,9 @@ const projectsData = [
 ];
 
 export default function Projects() {
+    const handleProjectClick = (projectTitle) => {
+        trackProjectClick(projectTitle);
+      };
   return (
     <section id="projects" className="projects">
       <div className="section-container">
@@ -63,9 +66,15 @@ export default function Projects() {
                   <span className="language-dot" style={{ background: project.color }}></span>
                   <span>{project.lang}</span>
                 </div>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="github-link">
-                  <span>👁️</span> View on GitHub
-                </a>
+                <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="github-link"
+                onClick={() => handleProjectClick(project.title)}
+              >
+                <span>👁️</span> View on GitHub
+              </a>
               </div>
             </div>
           ))}

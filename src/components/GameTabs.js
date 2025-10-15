@@ -3,16 +3,20 @@ import TicTacToe from './TicTacToe';
 import SlidingPuzzle from './SlidingPuzzle';
 import SnakeGame from './SnakeGame';
 import './GameTabs.css';
-
+import { trackGameEvent } from '../utils/analytics';
 export default function GameTabs() {
-  const [activeTab, setActiveTab] = useState('puzzle');
-
+const [activeTab, setActiveTab] = useState('puzzle');
+const handleTabChange = (tabName) => {
+  setActiveTab(tabName);
+  trackGameEvent(tabName, 'Tab Switch', 1);
+};
   return (
     <div className="game-tabs-container">
       <div className="tabs-header">
         <button
+         onClick={() => handleTabChange('puzzle')}
           className={`tab-button ${activeTab === 'puzzle' ? 'active' : ''}`}
-          onClick={() => setActiveTab('puzzle')}
+          
         >
           <span className="tab-icon">🎮</span>
           <span className="tab-text">Puzzle</span>

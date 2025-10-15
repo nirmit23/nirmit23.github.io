@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import GameTabs from './components/GameTabs';
 import Contact from './components/Contact';
+import { trackSectionView, trackThemeToggle } from './utils/analytics';
 import './components/GameTabs.css';
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
+    trackThemeToggle(newTheme);
   };
 
   const toggleMenu = () => {
@@ -50,7 +52,10 @@ function App() {
           const offsetTop = element.offsetTop;
           const height = element.clientHeight;
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
-            setActiveSection(section);
+            if (activeSection !== section) {
+              setActiveSection(section);
+              trackSectionView(section);
+            }
             break;
           }
         }
@@ -59,7 +64,7 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
