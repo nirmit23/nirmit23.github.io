@@ -21,7 +21,7 @@ const projectsData = [
     title: 'Health-Check-API',
     desc: 'Robust health monitoring API system with real-time status updates, comprehensive logging, and automated alert mechanisms for microservices.',
     tags: ['python', 'fastapi', 'docker'],
-    lang: 'Python',
+    lang: 'AWS',
     color: '#3572A5',
     link: 'https://github.com/nirmit231999/webapp'
   },
