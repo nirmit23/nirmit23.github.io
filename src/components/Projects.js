@@ -9,6 +9,15 @@ const projectsData = [
     color: '#b07219',
     link: 'https://github.com/nirmit231999/Supply-Chain-Management-System'
   },
+
+  {
+    title: 'Order-Management-System',
+    desc: 'Java-based desktop system implementing MVC architecture for managing orders, retailers, and product stock efficiently with real-time updates and layered controllers.',
+    tags: ['java', 'swing', 'mvc', 'oop'],
+    lang: 'Java',
+    color: '#b07219',
+    link: 'https://github.com/nirmit231999/Order-Management-System'
+  },
   {
     title: 'Boston-Town-Platform',
     desc: 'A comprehensive urban management platform designed to streamline city services and improve citizen engagement through modern web technologies.',
@@ -32,15 +41,6 @@ const projectsData = [
     lang: 'Python',
     color: '#3572A5',
     link: 'https://github.com/nirmit23/ccfd'
-  },
-
-  {
-    title: 'Order-Management-System',
-    desc: 'Java-based desktop system implementing MVC architecture for managing orders, retailers, and product stock efficiently with real-time updates and layered controllers.',
-    tags: ['java', 'swing', 'mvc', 'oop'],
-    lang: 'Java',
-    color: '#b07219',
-    link: 'https://github.com/nirmit231999/Order-Management-System'
   }
 ];
 

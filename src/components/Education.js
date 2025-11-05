@@ -7,16 +7,16 @@ const educationData = [
     location: 'Boston, Massachusetts',
     date: 'Expected May 2026',
     coursework: 'Cloud Computing, Object-Oriented Design, Program Structure & Algorithms, User Experience Design, Web Design',
-    logoLight: '/northeastern-light.png',
-    logoDark: '/northeastern-dark.png'
+    logoLight: '/northeastern-logo.png',
+    logoDark: '/northeastern-logo.png'
   },
   {
     degree: 'Bachelor of Engineering in Information Technology',
     school: 'University of Mumbai',
     location: 'Mumbai, India',
     date: 'May 2022',
-    logoLight: '/mumbai-light.png',
-    logoDark: '/mumbai-dark.png'
+    logoLight: '/mumbaiuniversity-logo.png',
+    logoDark: '/mumbaiuniversity-logo.png'
   }
 ];
 
