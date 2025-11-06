@@ -41,6 +41,14 @@ const projectsData = [
     lang: 'Python',
     color: '#3572A5',
     link: 'https://github.com/nirmit23/ccfd'
+  },
+  {
+    title: 'Live Air Drop',
+    desc: 'A machine learning-powered Flask web app that predicts fraudulent transactions in real time using logistic regression and scikit-learn. Integrated with email notifications for user alerts.',
+    tags: ['Xcode', 'SwiftUI', 'Figma'],
+    lang: 'SwiftUI',
+    color: '#3572A5',
+    link: 'https://github.com/nirmit231999/Live-Air-Drop/tree/main'
   }
 ];
 
@@ -92,3 +100,5 @@ export default function Projects() {
     </section>
   );
 }
+
+
