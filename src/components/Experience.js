@@ -17,6 +17,21 @@ const experienceData = [
     tags: ['React', 'Next.js', 'Node.js', 'OAuth 2.0', 'Jenkins', 'Selenium', 'ASP.Net']
   },
   {
+    title: 'Teaching Assistant',
+    company: 'Northeastern University',
+    location: 'Boston, Massachusetts',
+    date: 'January 2025 - April 2025',
+    logo: '/northeastern-logo.png',
+    highlights: [
+      'Mentored 200+ students in Human-Centered Design and Interaction Design, guiding them through UX research, wireframing, and user-flow development.',
+      'Led hands-on Figma workshops on Design Systems, Auto-Layout, Component Architecture, and Design Tokens to help students build scalable UI components.',
+      'Conducted high-fidelity prototyping sessions covering micro-interactions, motion design, responsive breakpoints, and WCAG-aligned accessibility best practices.',
+      'Delivered heuristic evaluations and design critiques to improve usability, visual hierarchy, and information architecture across student projects.',
+      'Collaborated with faculty to develop curriculum modules focused on product-thinking, iterative UX workflows, and modern UI/UX methodologies.',
+    ],    
+    tags: ['Figma', 'Mocqups', 'Human-Centered Design', 'Heuristic Evaluation', 'Persona & Empathy Mapping']
+  },
+  {
     title: 'Software Development Engineer',
     company: 'Finalyca Technologies Pvt. Ltd',
     location: 'Mumbai, India',
