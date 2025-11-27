@@ -142,3 +142,41 @@
       gap: 1rem;
     }
   }
+
+
+
+
+
+  .puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    gap: 8px;
+    margin: 20px auto;
+  }
+  
+  .puzzle-tile {
+    width: 80px;
+    height: 80px;
+    background: #3b82f6;
+    color: white;
+    display: flex;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .puzzle-tile.empty {
+    background: #ddd;
+  }
+  
+  .auth-box {
+    width: 250px;
+    padding: 20px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
