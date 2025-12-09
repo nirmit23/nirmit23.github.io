@@ -1675,3 +1675,53 @@ body.menu-open {
 }
 
 
+
+
+/* Skills with Logos */
+.skill-item-with-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: var(--bg-light);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.skill-item-with-logo:hover {
+  background: var(--card-bg);
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(91, 155, 213, 0.2);
+}
+
+.skill-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .skill-item-with-logo {
+  background: #2d3748;
+}
+
+[data-theme="dark"] .skill-item-with-logo:hover {
+  background: rgba(91, 155, 213, 0.15);
+}
+
+/* Filter logos for dark mode */
+[data-theme="dark"] .skill-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Don't invert colored logos */
+[data-theme="dark"] .skill-logo[src*="react"],
+[data-theme="dark"] .skill-logo[src*="vue"],
+[data-theme="dark"] .skill-logo[src*="angular"],
+[data-theme="dark"] .skill-logo[src*="firebase"] {
+  filter: none;
+}
