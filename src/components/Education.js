@@ -5,7 +5,7 @@ const educationData = [
     degree: 'Master of Science in Computer Software Engineering',
     school: 'Northeastern University',
     location: 'Boston, Massachusetts',
-    date: '',
+    date: 'December 2025',
     coursework: 'Cloud Computing, Object-Oriented Design, Program Structure & Algorithms, User Experience Design, Web Design',
     logoLight: '/northeastern-logo.png',
     logoDark: '/northeastern-logo.png'
