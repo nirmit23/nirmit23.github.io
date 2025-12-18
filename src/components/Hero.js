@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Hero({ scrollToSection }) {
   const roles = [
     "Software Engineer",
-    "Frontend Engineer",
+    "Full-Stack Developer",
     "UI Engineer",
   ];
 
