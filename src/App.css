@@ -1725,3 +1725,8 @@ body.menu-open {
 [data-theme="dark"] .skill-logo[src*="firebase"] {
   filter: none;
 }
+
+
+.me-img{
+  height: 34rem;
+}

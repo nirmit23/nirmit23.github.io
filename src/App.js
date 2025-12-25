@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import { trackSectionView, trackThemeToggle } from './utils/analytics';
 import './components/GameTabs.css';
 import './App.css';
+import WeatherWidget from './components/WeatherWidget';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -98,7 +99,7 @@ function App() {
           <GameTabs />
         </div>
       </section>
-
+      <WeatherWidget />
       <Contact />
     </div>
   );

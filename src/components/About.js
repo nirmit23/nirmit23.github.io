@@ -33,9 +33,14 @@ export default function About({ scrollToSection }) {
           </div>
           <div className="about-right">
             <div className="circle-card">
-              <div className="circle-icon">🧑🏻‍💻</div>
+              {/* <div className="circle-icon">🧑🏻‍💻</div>
               <h3>Always Building</h3>
-              <p>Creating solutions that matter</p>
+              <p>Creating solutions that matter</p> */}
+             
+              <img 
+                    src="/me.png"
+                    className='me-img'
+                  />
             </div>
           </div>
         </div>
