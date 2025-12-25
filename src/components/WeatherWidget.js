@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Cloud, MapPin, X, Droplets, Wind, Thermometer, Eye, Sunrise, Sunset, Maximize2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Cloud, MapPin, X, Droplets, Wind, Thermometer, Sunrise, Sunset, Maximize2, Search } from 'lucide-react';
 import './WeatherWidget.css';
 
 export default function WeatherWidget() {
@@ -12,12 +12,31 @@ export default function WeatherWidget() {
   const [locationName, setLocationName] = useState('');
   const [activeTab, setActiveTab] = useState('current');
   const [error, setError] = useState(null);
+  
+  // Autocomplete state
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const searchTimeoutRef = useRef(null);
+  const suggestionsRef = useRef(null);
 
   useEffect(() => {
     if (isOpen && !weather) {
       getCurrentLocation();
     }
-  }, [isOpen]);
+  }, [isOpen, weather]);
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (suggestionsRef.current && !suggestionsRef.current.contains(event.target)) {
+        setShowSuggestions(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const getCurrentLocation = () => {
     setLoading(true);
@@ -37,6 +56,68 @@ export default function WeatherWidget() {
     }
   };
 
+  // Fetch city suggestions as user types
+  const fetchCitySuggestions = async (query) => {
+    if (!query || query.length < 2) {
+      setSuggestions([]);
+      setShowSuggestions(false);
+      return;
+    }
+
+    setSearchLoading(true);
+
+    try {
+      const response = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=8&language=en&format=json`
+      );
+
+      const data = await response.json();
+
+      if (data.results && data.results.length > 0) {
+        setSuggestions(data.results.map(result => ({
+          name: result.name,
+          country: result.country,
+          admin1: result.admin1,
+          latitude: result.latitude,
+          longitude: result.longitude,
+          displayName: `${result.name}${result.admin1 ? ', ' + result.admin1 : ''}, ${result.country}`
+        })));
+        setShowSuggestions(true);
+      } else {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      }
+
+      setSearchLoading(false);
+    } catch (err) {
+      console.error('Autocomplete error:', err);
+      setSuggestions([]);
+      setSearchLoading(false);
+    }
+  };
+
+  const handleSearchInput = (e) => {
+    const value = e.target.value;
+    setSearchCity(value);
+
+    // Debounce API calls
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    searchTimeoutRef.current = setTimeout(() => {
+      fetchCitySuggestions(value);
+    }, 300); // Wait 300ms after user stops typing
+  };
+
+  const selectSuggestion = (suggestion) => {
+    setLocationName(suggestion.displayName);
+    setSearchCity('');
+    setSuggestions([]);
+    setShowSuggestions(false);
+    fetchWeatherByCoords(suggestion.latitude, suggestion.longitude);
+  };
+
   const fetchWeatherByCity = async (city) => {
     if (!city.trim()) {
       setError('Please enter a city name');
@@ -45,6 +126,7 @@ export default function WeatherWidget() {
 
     setLoading(true);
     setError(null);
+    setShowSuggestions(false);
 
     try {
       const geoResponse = await fetch(
@@ -77,10 +159,6 @@ export default function WeatherWidget() {
       );
 
       const weatherData = await weatherResponse.json();
-
-      if (!locationName) {
-        setLocationName(`${lat.toFixed(2)}°, ${lon.toFixed(2)}°`);
-      }
 
       setWeather(weatherData);
       processForecastData(weatherData);
@@ -149,6 +227,7 @@ export default function WeatherWidget() {
     if (searchCity.trim()) {
       fetchWeatherByCity(searchCity);
       setSearchCity('');
+      setShowSuggestions(false);
     }
   };
 
@@ -197,7 +276,6 @@ export default function WeatherWidget() {
             </div>
           ) : weather ? (
             <>
-              {/* Current Weather */}
               <div className="weather-current">
                 <div className="weather-main-display">
                   <div className="weather-icon-large">
@@ -238,10 +316,8 @@ export default function WeatherWidget() {
                 </div>
               </div>
 
-              {/* Expanded Content */}
               {isExpanded && (
                 <>
-                  {/* Detailed Stats */}
                   <div className="weather-detailed-stats">
                     <div className="detail-stat-card">
                       <div className="detail-stat-icon">☁️</div>
@@ -259,7 +335,6 @@ export default function WeatherWidget() {
                     </div>
                   </div>
 
-                  {/* Forecast Tabs */}
                   <div className="weather-tabs">
                     <button
                       onClick={() => setActiveTab('current')}
@@ -281,7 +356,6 @@ export default function WeatherWidget() {
                     </button>
                   </div>
 
-                  {/* Hourly Forecast */}
                   {activeTab === 'hourly' && forecast?.hourly && (
                     <div className="weather-forecast-section">
                       <div className="hourly-forecast-grid">
@@ -305,7 +379,6 @@ export default function WeatherWidget() {
                     </div>
                   )}
 
-                  {/* Daily Forecast */}
                   {activeTab === 'daily' && forecast?.daily && (
                     <div className="weather-forecast-section">
                       <div className="daily-forecast-list">
@@ -330,7 +403,6 @@ export default function WeatherWidget() {
                     </div>
                   )}
 
-                  {/* Current Details */}
                   {activeTab === 'current' && (
                     <div className="weather-forecast-section">
                       <div className="current-details-grid">
@@ -358,25 +430,55 @@ export default function WeatherWidget() {
                 </>
               )}
 
-              {/* Search */}
-              <div className="weather-search-section">
-                <input
-                  type="text"
-                  value={searchCity}
-                  onChange={(e) => setSearchCity(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                  placeholder="Search city..."
-                  className="weather-search-input"
-                />
-                <button onClick={handleSearch} className="weather-search-button">
-                  🔍
+              {/* Search with Autocomplete */}
+              <div className="weather-search-section" ref={suggestionsRef}>
+                <div className="weather-search-wrapper">
+                  <input
+                    type="text"
+                    value={searchCity}
+                    onChange={handleSearchInput}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                    onFocus={() => searchCity.length >= 2 && suggestions.length > 0 && setShowSuggestions(true)}
+                    placeholder="Search city..."
+                    className="weather-search-input"
+                  />
+                  
+                  {/* Autocomplete Dropdown */}
+                  {showSuggestions && suggestions.length > 0 && (
+                    <div className="autocomplete-dropdown">
+                      {suggestions.map((suggestion, index) => (
+                        <div
+                          key={index}
+                          className="autocomplete-item"
+                          onClick={() => selectSuggestion(suggestion)}
+                        >
+                          <MapPin size={14} className="autocomplete-icon" />
+                          <div className="autocomplete-text">
+                            <div className="autocomplete-city">{suggestion.name}</div>
+                            <div className="autocomplete-details">
+                              {suggestion.admin1 && `${suggestion.admin1}, `}{suggestion.country}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {searchLoading && (
+                    <div className="search-loading-indicator">
+                      <div className="mini-spinner"></div>
+                    </div>
+                  )}
+                </div>
+
+                <button onClick={handleSearch} className="weather-search-button" disabled={!searchCity.trim()}>
+                  <Search size={16} />
                 </button>
                 <button onClick={getCurrentLocation} className="weather-location-button" title="Current location">
                   📍
                 </button>
               </div>
 
-              {/* Quick Cities */}
               {isExpanded && (
                 <div className="weather-quick-cities">
                   {quickCities.map(city => (
