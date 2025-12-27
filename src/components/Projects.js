@@ -1,5 +1,7 @@
 import React from 'react';
+import { ExternalLink, Eye } from 'lucide-react';
 import { trackProjectClick } from '../utils/analytics';
+
 const projectsData = [
   {
     title: 'Supply-Chain-Management-System',
@@ -9,7 +11,6 @@ const projectsData = [
     color: '#b07219',
     link: 'https://github.com/nirmit231999/Supply-Chain-Management-System'
   },
-
   {
     title: 'Order-Management-System',
     desc: 'Java-based desktop system implementing MVC architecture for managing orders, retailers, and product stock efficiently with real-time updates and layered controllers.',
@@ -53,9 +54,10 @@ const projectsData = [
 ];
 
 export default function Projects() {
-    const handleProjectClick = (projectTitle) => {
-        trackProjectClick(projectTitle);
-      };
+  const handleProjectClick = (projectTitle) => {
+    trackProjectClick(projectTitle);
+  };
+
   return (
     <section id="projects" className="projects">
       <div className="section-container">
@@ -68,8 +70,8 @@ export default function Projects() {
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-title">
                   {project.title}
                 </a>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                  🔗
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link-icon">
+                  <ExternalLink size={18} />
                 </a>
               </div>
               <p className="project-description">{project.desc}</p>
@@ -84,14 +86,15 @@ export default function Projects() {
                   <span>{project.lang}</span>
                 </div>
                 <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="github-link"
-                onClick={() => handleProjectClick(project.title)}
-              >
-                <span>👁️</span> View on GitHub
-              </a>
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="github-link"
+                  onClick={() => handleProjectClick(project.title)}
+                >
+                  <Eye size={16} />
+                  <span>View on GitHub</span>
+                </a>
               </div>
             </div>
           ))}
@@ -101,4 +104,4 @@ export default function Projects() {
   );
 }
 
-
+export { projectsData };

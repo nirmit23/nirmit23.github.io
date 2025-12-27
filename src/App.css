@@ -1784,3 +1784,68 @@ body.menu-open {
 .tag-icon {
   display: none;
 }
+
+
+/* Skill Category Icons - SVG */
+.skill-icon-svg {
+  color: var(--primary-blue);
+  flex-shrink: 0;
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.skill-category:hover .skill-icon-svg {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+
+
+
+
+/* Project Link Icon */
+.project-link-icon {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.project-link-icon:hover {
+  color: var(--primary-blue);
+  background: var(--bg-light);
+  transform: scale(1.1);
+}
+
+/* GitHub Link with Icon */
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.github-link:hover {
+  color: var(--primary-blue);
+  transform: translateX(3px);
+}
+
+.github-link svg {
+  transition: transform 0.3s;
+}
+
+.github-link:hover svg {
+  transform: scale(1.1);
+}

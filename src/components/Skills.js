@@ -1,8 +1,9 @@
 import React from 'react';
+import { Globe, Settings, Smartphone, Cloud, Code2, Wrench } from 'lucide-react';
 
 const skillsData = [
   {
-    icon: '🌐',
+    IconComponent: Globe,
     title: 'Frontend Development',
     skills: [
       { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
@@ -17,7 +18,7 @@ const skillsData = [
     ]
   },
   {
-    icon: '⚙️',
+    IconComponent: Settings,
     title: 'Backend Development',
     skills: [
       { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
@@ -30,7 +31,7 @@ const skillsData = [
     ]
   },
   {
-    icon: '📱',
+    IconComponent: Smartphone,
     title: 'Mobile Development',
     skills: [
       { name: 'React Native', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
@@ -41,7 +42,7 @@ const skillsData = [
     ]
   },
   {
-    icon: '☁️',
+    IconComponent: Cloud,
     title: 'Cloud & DevOps',
     skills: [
       { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
@@ -55,7 +56,7 @@ const skillsData = [
     ]
   },
   {
-    icon: '💻',
+    IconComponent: Code2,
     title: 'Programming Languages',
     skills: [
       { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
@@ -67,7 +68,7 @@ const skillsData = [
     ]
   },
   {
-    icon: '🔧',
+    IconComponent: Wrench,
     title: 'Tools & Technologies',
     skills: [
       { name: 'VS Code', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
@@ -88,29 +89,32 @@ export default function Skills() {
         <h2>Skills & Technologies</h2>
 
         <div className="skills-grid">
-          {skillsData.map((category, i) => (
-            <div key={i} className="skill-category">
-              <div className="skill-header">
-                <span className="skill-icon">{category.icon}</span>
-                <h3 className="skill-title">{category.title}</h3>
+          {skillsData.map((category, i) => {
+            const Icon = category.IconComponent;
+            return (
+              <div key={i} className="skill-category">
+                <div className="skill-header">
+                  <Icon className="skill-icon-svg" size={24} />
+                  <h3 className="skill-title">{category.title}</h3>
+                </div>
+                <div className="skill-items">
+                  {category.skills.map((skill, j) => (
+                    <div key={j} className="skill-item-with-logo">
+                      <img 
+                        src={skill.logo} 
+                        alt={skill.name}
+                        className="skill-logo"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                      <span>{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="skill-items">
-                {category.skills.map((skill, j) => (
-                  <div key={j} className="skill-item-with-logo">
-                    <img 
-                      src={skill.logo} 
-                      alt={skill.name}
-                      className="skill-logo"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                      }}
-                    />
-                    <span>{skill.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
