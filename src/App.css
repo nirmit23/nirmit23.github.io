@@ -1728,3 +1728,59 @@ body.menu-open {
 .me-img{
   height: 34rem;
 }
+
+
+/* Typing Subtitle */
+.typing-subtitle {
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+  color: var(--primary-blue);
+  font-weight: 400;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Tag Icons - SVG instead of emoji */
+.tag-icon-svg {
+  color: var(--primary-blue);
+  flex-shrink: 0;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-light);
+  border-radius: 25px;
+  font-size: 0.95rem;
+  animation: float 3s ease-in-out infinite;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s;
+}
+
+.tag:hover {
+  border-color: var(--primary-blue);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(91, 155, 213, 0.2);
+}
+
+.tag:hover .tag-icon-svg {
+  transform: scale(1.1);
+}
+
+/* Remove old tag-icon if exists */
+.tag-icon {
+  display: none;
+}

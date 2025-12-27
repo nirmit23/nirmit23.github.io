@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { Code, Rocket, Sparkles } from 'lucide-react';
 export default function Hero({ scrollToSection }) {
   const roles = [
     "Software Engineer",
@@ -63,15 +63,15 @@ export default function Hero({ scrollToSection }) {
 
       <div className="tags-container">
         <div className="tag">
-          <span className="tag-icon">💻</span>
+          <Code className="tag-icon-svg" size={20} />
           <span>Engineering</span>
         </div>
         <div className="tag">
-          <span className="tag-icon">🚀</span>
+          <Rocket className="tag-icon-svg" size={20} />
           <span>Development</span>
         </div>
         <div className="tag">
-          <span className="tag-icon">✨</span>
+          <Sparkles className="tag-icon-svg" size={20} />
           <span>Creating</span>
         </div>
       </div>
