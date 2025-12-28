@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,10 +9,55 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import GameTabs from './components/GameTabs';
 import Contact from './components/Contact';
+import LiveAirDropDetails from './components/LiveAirDropDetails';
+import WeatherWidget from './components/WeatherWidget';
 import { trackSectionView, trackThemeToggle } from './utils/analytics';
 import './components/GameTabs.css';
+import './components/LiveAirDropDetails.css';
 import './App.css';
-import WeatherWidget from './components/WeatherWidget';
+
+// ScrollToTop component to handle scroll restoration
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// HomePage component containing all your main sections
+function HomePage({ theme, toggleTheme, menuOpen, toggleMenu, activeSection, scrollToSection, closeMenu }) {
+  return (
+    <>
+      <Navigation
+        theme={theme}
+        toggleTheme={toggleTheme}
+        menuOpen={menuOpen}
+        toggleMenu={toggleMenu}
+        activeSection={activeSection}
+        scrollToSection={scrollToSection}
+      />
+      <main>
+        <Hero scrollToSection={scrollToSection} />
+        <About />
+        <Education />
+        <Experience />
+        <Projects />
+        <Skills />
+        <section id="games" className="games-section">
+          <div className="container">
+            <h2 className="section-title">Interactive Games</h2>
+            <GameTabs />
+          </div>
+        </section>
+        <Contact />
+      </main>
+      <WeatherWidget />
+    </>
+  );
+}
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -52,6 +98,7 @@ function App() {
         if (element) {
           const offsetTop = element.offsetTop;
           const height = element.clientHeight;
+
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
             if (activeSection !== section) {
               setActiveSection(section);
@@ -76,32 +123,31 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Navigation
-        theme={theme}
-        toggleTheme={toggleTheme}
-        menuOpen={menuOpen}
-        toggleMenu={toggleMenu}
-        activeSection={activeSection}
-        scrollToSection={scrollToSection}
-      />
-
-      <Hero scrollToSection={scrollToSection} />
-      <About scrollToSection={scrollToSection} />
-      <Education />
-      <Experience />
-      <Projects />
-      <Skills />
-      
-      <section id="games" className="games">
-        <div className="section-container">
-          <h2>Interactive Games</h2>
-          <GameTabs />
-        </div>
-      </section>
-      <WeatherWidget />
-      <Contact />
-    </div>
+    <Router basename="/">
+      <ScrollToTop />
+      <div className="App">
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              <HomePage
+                theme={theme}
+                toggleTheme={toggleTheme}
+                menuOpen={menuOpen}
+                toggleMenu={toggleMenu}
+                activeSection={activeSection}
+                scrollToSection={scrollToSection}
+                closeMenu={closeMenu}
+              />
+            } 
+          />
+          <Route 
+            path="/project/live-air-drop" 
+            element={<LiveAirDropDetails theme={theme} toggleTheme={toggleTheme} />} 
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

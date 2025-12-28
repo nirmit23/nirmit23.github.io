@@ -1,9 +1,11 @@
 import React from 'react';
-import { ExternalLink, Eye } from 'lucide-react';
+import { ExternalLink, Eye, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { trackProjectClick } from '../utils/analytics';
-
+import { Link } from 'react-router-dom';
 const projectsData = [
   {
+    id: 1,
     title: 'Supply-Chain-Management-System',
     desc: 'End-to-end supply chain management platform built with Java Swing and Hibernate that automates order tracking, stock updates, and supplier coordination across warehouses.',
     tags: ['java', 'swing', 'hibernate', 'mvc'],
@@ -12,6 +14,7 @@ const projectsData = [
     link: 'https://github.com/nirmit231999/Supply-Chain-Management-System'
   },
   {
+    id: 2,
     title: 'Order-Management-System',
     desc: 'Java-based desktop system implementing MVC architecture for managing orders, retailers, and product stock efficiently with real-time updates and layered controllers.',
     tags: ['java', 'swing', 'mvc', 'oop'],
@@ -20,6 +23,7 @@ const projectsData = [
     link: 'https://github.com/nirmit231999/Order-Management-System'
   },
   {
+    id: 3,
     title: 'Boston-Town-Platform',
     desc: 'A comprehensive urban management platform designed to streamline city services and improve citizen engagement through modern web technologies.',
     tags: ['react', 'nodejs', 'mongodb'],
@@ -28,6 +32,7 @@ const projectsData = [
     link: 'https://github.com/nirmit231999/Boston-Town'
   },
   {
+    id: 4,
     title: 'Health-Check-API',
     desc: 'Robust health monitoring API system with real-time status updates, comprehensive logging, and automated alert mechanisms for microservices.',
     tags: ['python', 'fastapi', 'docker'],
@@ -36,6 +41,7 @@ const projectsData = [
     link: 'https://github.com/nirmit231999/webapp'
   },
   {
+    id: 5,
     title: 'Credit-Card-Fraud-Detection',
     desc: 'A machine learning-powered Flask web app that predicts fraudulent transactions in real time using logistic regression and scikit-learn. Integrated with email notifications for user alerts.',
     tags: ['flask', 'python', 'machine-learning', 'scikit-learn'],
@@ -44,18 +50,27 @@ const projectsData = [
     link: 'https://github.com/nirmit23/ccfd'
   },
   {
+    id: 6,
     title: 'Live Air Drop',
-    desc: 'A machine learning-powered Flask web app that predicts fraudulent transactions in real time using logistic regression and scikit-learn. Integrated with email notifications for user alerts.',
+    desc: 'iOS application with real-time file sharing capabilities built with SwiftUI and designed in Figma.',
     tags: ['Xcode', 'SwiftUI', 'Figma'],
-    lang: 'SwiftUI',
-    color: '#3572A5',
-    link: 'https://github.com/nirmit231999/Live-Air-Drop/tree/main'
+    lang: 'Swift',
+    color: '#ffac45',
+    link: 'https://github.com/nirmit231999/Live-Air-Drop/tree/main',
+    hasDetails: true,
+    figmaUrl: 'https://www.figma.com/embed?embed_host=share&mode=present&url=https%3A%2F%2Fwww.figma.com%2Fboard%2FWTq4Oyw9lMZxyvBSyn4SJd%2FLive-Airdrop-Feature-Flowchart%3Fnode-id%3D0-1'
   }
 ];
 
 export default function Projects() {
+  const navigate = useNavigate();
+
   const handleProjectClick = (projectTitle) => {
     trackProjectClick(projectTitle);
+  };
+
+  const handleViewMore = (projectId) => {
+    navigate(`/project/${projectId}`);
   };
 
   return (
@@ -85,16 +100,23 @@ export default function Projects() {
                   <span className="language-dot" style={{ background: project.color }}></span>
                   <span>{project.lang}</span>
                 </div>
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="github-link"
-                  onClick={() => handleProjectClick(project.title)}
-                >
-                  <Eye size={16} />
-                  <span>View on GitHub</span>
-                </a>
+                {project.hasDetails ? (
+                  <Link to={`/project/${project.title.toLowerCase().replace(/\s+/g, '-')}`} className="view-more-btn">
+                     
+                      View More  <ArrowRight size={16} />
+                    </Link>
+                ) : (
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="github-link"
+                    onClick={() => handleProjectClick(project.title)}
+                  >
+                    <Eye size={16} />
+                    <span>View on GitHub</span>
+                  </a>
+                )}
               </div>
             </div>
           ))}

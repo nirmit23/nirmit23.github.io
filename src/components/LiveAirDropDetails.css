@@ -1,0 +1,431 @@
+/* Live Air Drop Details Page */
+.airdrop-details-page {
+    min-height: 100vh;
+    background: var(--bg-white);
+  }
+  
+  /* Hero Section */
+  .airdrop-hero {
+    padding: 8rem 2rem 4rem;
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .airdrop-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .airdrop-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-blue), #93C5FD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .airdrop-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  
+  .airdrop-meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .airdrop-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Content */
+  .airdrop-content {
+    padding: 3rem 2rem;
+  }
+  
+  .content-container-wide {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Figma Section */
+  .figma-section {
+    margin-bottom: 3rem;
+  }
+  
+  .figma-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .figma-header h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .figma-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+  
+  .figma-embed-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+  }
+  
+  .figma-embed-card iframe {
+    width: 100%;
+    height: 700px;
+    border-radius: 12px;
+  }
+  
+  .figma-actions {
+    text-align: center;
+  }
+  
+  .figma-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    background: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  
+  .figma-open-btn:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(91, 155, 213, 0.4);
+  }
+  
+  /* Project Info Cards */
+  .project-info-section {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+  
+  .info-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .info-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+  
+  .tech-pills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .tech-pill {
+    padding: 0.6rem 1.2rem;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  .features-list-simple {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .features-list-simple li {
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  
+  .features-list-simple li::before {
+    content: '▹';
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .airdrop-title {
+      font-size: 2rem;
+    }
+  
+    .figma-embed-card iframe {
+      height: 500px;
+    }
+  
+    .info-card {
+      padding: 1.5rem;
+    }
+  }
+
+  /* Navigation */
+.project-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background var(--transition-speed) ease;
+  }
+  
+  [data-theme="dark"] .project-nav {
+    background: rgba(15, 23, 42, 0.95);
+  }
+  
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Back Button */
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    text-decoration: none;
+  }
+  
+  .back-btn:hover {
+    background: var(--bg-light);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    transform: translateX(-3px);
+  }
+  
+  /* Primary Action Button */
+  .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  .primary-btn:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(91, 155, 213, 0.4);
+  }
+  
+  /* Project Breadcrumb */
+  .project-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  
+  .project-breadcrumb a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .project-breadcrumb a:hover {
+    color: var(--primary-blue-hover);
+  }
+  
+  .project-breadcrumb span {
+    color: var(--text-secondary);
+  }
+  
+  /* Project Tags in Hero */
+  .project-tags-hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag-badge {
+    padding: 0.4rem 0.9rem;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  /* Meta Item */
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+  
+  .language-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  /* Back Section at Bottom */
+  .back-section {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .back-bottom-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.8rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    text-decoration: none;
+  }
+  
+  .back-bottom-btn:hover {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+    transform: translateX(-5px);
+    box-shadow: 0 6px 16px rgba(91, 155, 213, 0.3);
+  }
+  
+  /* Theme Toggle */
+  /* .theme-toggle {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+   */
+  /* .theme-toggle:hover {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+    transform: rotate(20deg);
+  } */
+  
+  /* Logo */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .project-nav {
+      padding: 1rem;
+    }
+  
+    .back-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+  
+    .logo {
+      font-size: 1.25rem;
+    }
+  
+    .airdrop-hero {
+      padding: 6rem 1.5rem 3rem;
+    }
+  
+    .airdrop-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    .airdrop-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .primary-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .back-bottom-btn {
+      padding: 0.7rem 1.5rem;
+      font-size: 0.95rem;
+    }
+  }
+  
