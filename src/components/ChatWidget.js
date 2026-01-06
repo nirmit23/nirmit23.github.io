@@ -36,7 +36,7 @@ export default function ChatWidget({ onClose }) {
     } else if (lowerMsg.includes('project')) {
       return "Nirmit has worked on various projects including Supply Chain Management Systems, Live Air Drop iOS app, Credit Card Fraud Detection, and more. Scroll to the Projects section to see them all!";
     } else if (lowerMsg.includes('contact') || lowerMsg.includes('email') || lowerMsg.includes('reach')) {
-      return "You can reach Nirmit via email at patel.nirmit2@northeastern.edu or connect on LinkedIn. Check the Contact section at the bottom!";
+      return "You can reach Nirmit via email at shah.nirm@northeastern.edu or connect on LinkedIn. Check the Contact section at the bottom!";
     } else if (lowerMsg.includes('experience') || lowerMsg.includes('work')) {
       return "Nirmit has worked at Enlabel Global Services Inc. in Boston, Finalyca Technologies in Mumbai, and Shaalastic. He has experience in full-stack development, QA automation, and cloud infrastructure.";
     } else if (lowerMsg.includes('education') || lowerMsg.includes('study')) {
