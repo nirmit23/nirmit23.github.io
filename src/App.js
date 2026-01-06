@@ -15,6 +15,7 @@ import { trackSectionView, trackThemeToggle } from './utils/analytics';
 import './components/GameTabs.css';
 import './components/LiveAirDropDetails.css';
 import './App.css';
+import WidgetHub from './components/WidgetHub';
 
 // ScrollToTop component to handle scroll restoration
 function ScrollToTop() {
@@ -54,7 +55,7 @@ function HomePage({ theme, toggleTheme, menuOpen, toggleMenu, activeSection, scr
         </section>
         <Contact />
       </main>
-      <WeatherWidget />
+      <WidgetHub />
     </>
   );
 }
