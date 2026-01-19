@@ -1,0 +1,250 @@
+{
+    "profile": {
+      "name": "Nirmit Shah",
+      "title": "Full-Stack Developer",
+      "heroSubtitle": "Engineering · Development · Creating",
+      "intro": "I'm a software engineer driven by curiosity, innovation, and the art of problem-solving. I love transforming complex challenges into elegant, high-performance code and crafting products that make a real impact.",
+      "passion": "My passion lies at the intersection of creativity and engineering — from architecting scalable systems to designing seamless user experiences. I thrive on exploring new technologies, experimenting with ideas, and pushing boundaries in how software can shape the world.",
+      "ctaExplore": "Explore My Work →",
+      "ctaConnect": "Let's Connect →"
+    },
+  
+    "education": [
+      {
+        "school": "Northeastern University",
+        "degree": "Master of Science in Computer Software Engineering",
+        "graduation": "December 2025",
+        "location": "Boston, Massachusetts",
+        "coursework": [
+          "Cloud Computing",
+          "Object-Oriented Design",
+          "Program Structure & Algorithms",
+          "User Experience Design",
+          "Web Design"
+        ]
+      },
+      {
+        "school": "University of Mumbai",
+        "degree": "Bachelor of Engineering in Information Technology",
+        "graduation": "May 2022",
+        "location": "Mumbai, India"
+      }
+    ],
+  
+    "experience": [
+      {
+        "company": "Enlabel Global Services Inc.",
+        "role": "Software Development Engineer",
+        "location": "Boston, Massachusetts",
+        "date": "June 2024 - January 2025",
+        "highlights": [
+          "Engineered SaaS publishing workflow in React integrating Java-based SOAP APIs, automating publisher submissions and owner approvals across microservices.",
+          "Developed reusable npm libraries to standardize UI components, reducing repetitive frontend effort by 20%.",
+          "Converted Figma prototypes into a responsive Next.js web app using Strapi CMS and IIS deployment, increasing user acquisition by 25%.",
+          "Implemented OAuth 2.0 + JWT authentication in Node.js, improving session persistence & data security.",
+          "Enhanced test coverage by 20% through 12+ new automation scripts and optimized 163+ feature validation tests via Jenkins."
+        ],
+        "skills": [
+          "React",
+          "Next.js",
+          "Node.js",
+          "OAuth 2.0",
+          "Jenkins",
+          "Selenium",
+          "ASP.Net"
+        ]
+      },
+      {
+        "company": "Northeastern University",
+        "role": "Teaching Assistant",
+        "location": "Boston, Massachusetts",
+        "date": "January 2025 - April 2025",
+        "highlights": [
+          "Mentored 200+ students in Human-Centered Design and Interaction Design.",
+          "Led hands-on Figma workshops on Design Systems, Auto-Layout, Component Architecture, and Design Tokens.",
+          "Conducted high-fidelity prototyping sessions on micro-interactions, motion design, and WCAG accessibility.",
+          "Delivered heuristic evaluations and design critiques to improve usability and visual hierarchy.",
+          "Collaborated with faculty on curriculum modules focused on modern UI/UX methodologies."
+        ],
+        "skills": [
+          "Figma",
+          "Human-Centered Design",
+          "Heuristic Evaluation",
+          "Persona & Empathy Mapping",
+          "Mocqups"
+        ]
+      },
+      {
+        "company": "Finalyca Technologies Pvt. Ltd",
+        "role": "Software Development Engineer",
+        "location": "Mumbai, India",
+        "date": "June 2022 - June 2023",
+        "highlights": [
+          "Architected a pre-login Next.js portal using Ant Design UI, improving UI responsiveness by 30%.",
+          "Integrated CSV-based pipelines for SSG, improving data loading speed and accuracy by 25%.",
+          "Migrated legacy .NET portal to React.js (ES6) using Hooks, improving maintainability by 33%.",
+          "Implemented GitLab CI/CD pipelines to automate React builds and accelerate deployments by 25%.",
+          "Delivered 34+ Highcharts visualizations with Java backend endpoints, achieving 99% cross-browser responsiveness."
+        ],
+        "skills": [
+          "Next.js",
+          "React.js",
+          "Java",
+          "GitLab CI/CD",
+          "Highcharts"
+        ]
+      },
+      {
+        "company": "Shaalastic",
+        "role": "Software Engineer Intern",
+        "location": "Mumbai, India",
+        "date": "May 2020 - August 2021",
+        "highlights": [
+          "Built instructional web platform with Laravel and PHP implementing secure authentication.",
+          "Developed backend with Laravel MVC, integrated REST APIs, and managed MySQL DB.",
+          "Optimized database performance with indexing while maintaining Git-based version control."
+        ],
+        "skills": [
+          "Laravel",
+          "PHP",
+          "MySQL",
+          "Git"
+        ]
+      }
+    ],
+  
+    "projects": [
+      {
+        "id": 1,
+        "title": "Supply-Chain-Management-System",
+        "description": "End-to-end supply chain management platform built with Java Swing and Hibernate that automates order tracking, stock updates, and supplier coordination across warehouses.",
+        "tags": ["java", "swing", "hibernate", "mvc"],
+        "language": "Java",
+        "color": "#b07219",
+        "link": "https://github.com/nirmit231999/Supply-Chain-Management-System"
+      },
+      {
+        "id": 2,
+        "title": "Order-Management-System",
+        "description": "Java-based desktop system implementing MVC architecture for managing orders, retailers, and product stock efficiently.",
+        "tags": ["java", "swing", "mvc", "oop"],
+        "language": "Java",
+        "color": "#b07219",
+        "link": "https://github.com/nirmit231999/Order-Management-System"
+      },
+      {
+        "id": 3,
+        "title": "Boston-Town-Platform",
+        "description": "A comprehensive urban management platform designed to streamline city services and improve citizen engagement.",
+        "tags": ["react", "nodejs", "mongodb"],
+        "language": "JavaScript",
+        "color": "#f1e05a",
+        "link": "https://github.com/nirmit231999/Boston-Town"
+      },
+      {
+        "id": 4,
+        "title": "Health-Check-API",
+        "description": "Robust health monitoring API system with real-time status updates, logging, and automated alerting.",
+        "tags": ["python", "fastapi", "docker"],
+        "language": "AWS",
+        "color": "#3572A5",
+        "link": "https://github.com/nirmit231999/webapp"
+      },
+      {
+        "id": 5,
+        "title": "Credit-Card-Fraud-Detection",
+        "description": "Machine learning-powered Flask web app predicting fraudulent transactions in real time.",
+        "tags": ["flask", "python", "machine-learning", "scikit-learn"],
+        "language": "Python",
+        "color": "#3572A5",
+        "link": "https://github.com/nirmit23/ccfd"
+      },
+      {
+        "id": 6,
+        "title": "Live Air Drop",
+        "description": "iOS application with real-time file sharing using SwiftUI and Figma-designed UI.",
+        "tags": ["Xcode", "SwiftUI", "Figma"],
+        "language": "Swift",
+        "color": "#ffac45",
+        "link": "https://github.com/nirmit231999/Live-Air-Drop/tree/main",
+        "hasDetails": true,
+        "slug": "live-air-drop"
+      }
+    ],
+  
+    "skills": {
+      "Frontend Development": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Tailwind CSS",
+        "Next.js",
+        "Vue.js",
+        "Angular"
+      ],
+      "Backend Development": [
+        "Node.js",
+        "Python",
+        "Java",
+        "Express.js",
+        "Spring Boot",
+        "REST APIs",
+        "GraphQL"
+      ],
+      "Mobile Development": [
+        "React Native",
+        "Flutter",
+        "iOS Development",
+        "Android Development",
+        "Swift"
+      ],
+      "Cloud & DevOps": [
+        "AWS",
+        "Google Cloud",
+        "Docker",
+        "Kubernetes",
+        "GitLab CI/CD",
+        "Jenkins",
+        "Git",
+        "GitHub Actions"
+      ],
+      "Programming Languages": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Java",
+        "C++",
+        "SQL"
+      ],
+      "Tools & Technologies": [
+        "VS Code",
+        "IntelliJ IDEA",
+        "Postman",
+        "Figma",
+        "MongoDB",
+        "PostgreSQL",
+        "Redis"
+      ]
+    },
+  
+    "contact": [
+      {
+        "title": "Email",
+        "value": "shah.nirm@northeastern.edu",
+        "href": "mailto:shah.nirm@northeastern.edu"
+      },
+      {
+        "title": "LinkedIn",
+        "value": "linkedin.com/in/shah-nirmit",
+        "href": "https://linkedin.com/in/shah-nirmit/"
+      },
+      {
+        "title": "GitHub",
+        "value": "github.com/nirmit231999",
+        "href": "https://github.com/nirmit231999"
+      }
+    ]
+  }
+  
