@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollFade from './ScrollFade';
 
 const experienceData = [
   {
@@ -65,43 +66,52 @@ export default function Experience() {
   return (
     <section id="experience" className="experience">
       <div className="section-container">
-        <h2>Work Experience</h2>
-        <p className="experience-subtitle">
-          Professional journey building scalable software solutions and leading development initiatives.
-        </p>
+        <ScrollFade direction="up" duration={0.5}>
+          <h2>Work Experience</h2>
+          <p className="experience-subtitle">
+            Professional journey building scalable software solutions and leading development initiatives.
+          </p>
+        </ScrollFade>
 
         <div className="experience-timeline">
           {experienceData.map((exp, index) => (
-            <div key={index} className="experience-card">
-              <div className="experience-content-wrapper">
-                <div className="experience-image">
-                  <img src={exp.logo} alt={exp.company} />
-                </div>
-                <div className="experience-details">
-                  <div className="experience-header">
-                    <div className="experience-left">
-                      <h3 className="experience-title">{exp.title}</h3>
-                      <div className="company-info">
-                        <span className="company-name">{exp.company}</span>
-                        <span className="separator">•</span>
-                        <span className="company-location">{exp.location}</span>
-                      </div>
-                    </div>
-                    <span className="experience-date">{exp.date}</span>
+            <ScrollFade 
+              key={index} 
+              direction={index % 2 === 0 ? 'left' : 'right'}
+              delay={80 + (index * 100)}
+              duration={0.6}
+            >
+              <div className="experience-card">
+                <div className="experience-content-wrapper">
+                  <div className="experience-image">
+                    <img src={exp.logo} alt={exp.company} />
                   </div>
-                  <ul className="experience-highlights">
-                    {exp.highlights.map((highlight, i) => (
-                      <li key={i}>{highlight}</li>
-                    ))}
-                  </ul>
-                  <div className="experience-tags">
-                    {exp.tags.map((tag, i) => (
-                      <span key={i} className="exp-tag">{tag}</span>
-                    ))}
+                  <div className="experience-details">
+                    <div className="experience-header">
+                      <div className="experience-left">
+                        <h3 className="experience-title">{exp.title}</h3>
+                        <div className="company-info">
+                          <span className="company-name">{exp.company}</span>
+                          <span className="separator">•</span>
+                          <span className="company-location">{exp.location}</span>
+                        </div>
+                      </div>
+                      <span className="experience-date">{exp.date}</span>
+                    </div>
+                    <ul className="experience-highlights">
+                      {exp.highlights.map((highlight, i) => (
+                        <li key={i}>{highlight}</li>
+                      ))}
+                    </ul>
+                    <div className="experience-tags">
+                      {exp.tags.map((tag, i) => (
+                        <span key={i} className="exp-tag">{tag}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollFade>
           ))}
         </div>
       </div>

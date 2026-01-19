@@ -1,5 +1,7 @@
 import React from 'react';
 import { trackContactClick } from '../utils/analytics';
+import ScrollFade from './ScrollFade';
+
 const contactLinks = [
   {
     title: 'Email',
@@ -38,24 +40,32 @@ export default function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="section-container">
-        <h2>Let's Connect</h2>
+        <ScrollFade direction="up" duration={0.5}>
+          <h2>Let's Connect</h2>
+        </ScrollFade>
 
         <div className="contact-grid">
           {contactLinks.map((contact, index) => (
-            <a
+            <ScrollFade 
               key={index}
-              href={contact.href}
-  onClick={() => trackContactClick(contact.title)}
-              target={contact.href.startsWith('http') ? '_blank' : undefined}
-              rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="contact-card"
+              direction="up"
+              delay={80 + (index * 100)}
+              duration={0.5}
             >
-              <div className="contact-icon">
-                {contact.icon}
-              </div>
-              <h3>{contact.title}</h3>
-              <p>{contact.value}</p>
-            </a>
+              <a
+                href={contact.href}
+                onClick={() => trackContactClick(contact.title)}
+                target={contact.href.startsWith('http') ? '_blank' : undefined}
+                rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="contact-card"
+              >
+                <div className="contact-icon">
+                  {contact.icon}
+                </div>
+                <h3>{contact.title}</h3>
+                <p>{contact.value}</p>
+              </a>
+            </ScrollFade>
           ))}
         </div>
       </div>

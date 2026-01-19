@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollFade from './ScrollFade';
 
 const educationData = [
   {
@@ -47,40 +48,49 @@ export default function Education() {
   return (
     <section id="education" className="education">
       <div className="section-container">
-        <h2>Education</h2>
-        <p className="education-subtitle">
-          Academic background and qualifications that shaped my technical foundation.
-        </p>
+        <ScrollFade direction="up" duration={0.5}>
+          <h2>Education</h2>
+          <p className="education-subtitle">
+            Academic background and qualifications that shaped my technical foundation.
+          </p>
+        </ScrollFade>
 
         <div className="education-timeline">
           {educationData.map((edu, index) => (
-            <div key={index} className="education-card">
-              <div className="education-content-wrapper">
-                <div className="education-logo">
-                  <img 
-                    src={theme === 'dark' ? edu.logoDark : edu.logoLight} 
-                    alt={edu.school}
-                  />
-                </div>
-                <div className="education-details-wrapper">
-                  <div className="education-header">
-                    <div className="education-title">
-                      <h3>{edu.degree}</h3>
-                      <span className="education-date">{edu.date}</span>
-                    </div>
-                    <div className="education-school">
-                      <span className="school-name">{edu.school}</span>
-                      <span className="school-location">{edu.location}</span>
-                    </div>
+            <ScrollFade 
+              key={index} 
+              direction="up" 
+              delay={100 + (index * 120)}
+              duration={0.6}
+            >
+              <div className="education-card">
+                <div className="education-content-wrapper">
+                  <div className="education-logo">
+                    <img 
+                      src={theme === 'dark' ? edu.logoDark : edu.logoLight} 
+                      alt={edu.school}
+                    />
                   </div>
-                  {edu.coursework && (
-                    <div className="education-details">
-                      <p><strong>Coursework:</strong> {edu.coursework}</p>
+                  <div className="education-details-wrapper">
+                    <div className="education-header">
+                      <div className="education-title">
+                        <h3>{edu.degree}</h3>
+                        <span className="education-date">{edu.date}</span>
+                      </div>
+                      <div className="education-school">
+                        <span className="school-name">{edu.school}</span>
+                        <span className="school-location">{edu.location}</span>
+                      </div>
                     </div>
-                  )}
+                    {edu.coursework && (
+                      <div className="education-details">
+                        <p><strong>Coursework:</strong> {edu.coursework}</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollFade>
           ))}
         </div>
       </div>

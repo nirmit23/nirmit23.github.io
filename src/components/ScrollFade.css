@@ -1,0 +1,136 @@
+/* Base scroll fade styles */
+.scroll-fade {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition: none;
+  }
+  
+  .scroll-fade.is-visible {
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Direction-based animations */
+  
+  /* Fade Up */
+  .scroll-fade-up {
+    transform: translateY(30px);
+  }
+  
+  .scroll-fade-up.is-visible {
+    animation: fadeInUp forwards;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Fade Down */
+  .scroll-fade-down {
+    transform: translateY(-30px);
+  }
+  
+  .scroll-fade-down.is-visible {
+    animation: fadeInDown forwards;
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Fade Left */
+  .scroll-fade-left {
+    transform: translateX(30px);
+  }
+  
+  .scroll-fade-left.is-visible {
+    animation: fadeInLeft forwards;
+  }
+  
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Fade Right */
+  .scroll-fade-right {
+    transform: translateX(-30px);
+  }
+  
+  .scroll-fade-right.is-visible {
+    animation: fadeInRight forwards;
+  }
+  
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Scale Fade */
+  .scroll-fade-scale {
+    transform: scale(0.9);
+  }
+  
+  .scroll-fade-scale.is-visible {
+    animation: fadeInScale forwards;
+  }
+  
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-fade {
+      animation: none !important;
+      transition: opacity 0.3s ease-out !important;
+      transform: none !important;
+    }
+    
+    .scroll-fade.is-visible {
+      opacity: 1;
+    }
+  }

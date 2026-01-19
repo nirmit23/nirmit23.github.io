@@ -2,38 +2,48 @@ import React, { useState } from 'react';
 import TicTacToe from './TicTacToe';
 import SlidingPuzzle from './SlidingPuzzle';
 import SnakeGame from './SnakeGame';
+import Game2048 from './Game2048';
 import './GameTabs.css';
 import { trackGameEvent } from '../utils/analytics';
+
 export default function GameTabs() {
-const [activeTab, setActiveTab] = useState('puzzle');
-const handleTabChange = (tabName) => {
-  setActiveTab(tabName);
-  trackGameEvent(tabName, 'Tab Switch', 1);
-};
+  const [activeTab, setActiveTab] = useState('puzzle');
+
+  const handleTabChange = (tabName) => {
+    setActiveTab(tabName);
+    trackGameEvent(tabName, 'Tab Switch', 1);
+  };
+
   return (
     <div className="game-tabs-container">
       <div className="tabs-header">
         <button
-         onClick={() => handleTabChange('puzzle')}
+          onClick={() => handleTabChange('puzzle')}
           className={`tab-button ${activeTab === 'puzzle' ? 'active' : ''}`}
-          
         >
           <span className="tab-icon">🎮</span>
           <span className="tab-text">Puzzle</span>
         </button>
         <button
           className={`tab-button ${activeTab === 'tictactoe' ? 'active' : ''}`}
-          onClick={() => setActiveTab('tictactoe')}
+          onClick={() => handleTabChange('tictactoe')}
         >
           <span className="tab-icon">⭕</span>
           <span className="tab-text">Tic Tac Toe</span>
         </button>
         <button
           className={`tab-button ${activeTab === 'snake' ? 'active' : ''}`}
-          onClick={() => setActiveTab('snake')}
+          onClick={() => handleTabChange('snake')}
         >
           <span className="tab-icon">🐍</span>
           <span className="tab-text">Snake</span>
+        </button>
+        <button
+          className={`tab-button ${activeTab === '2048' ? 'active' : ''}`}
+          onClick={() => handleTabChange('2048')}
+        >
+          <span className="tab-icon">🎯</span>
+          <span className="tab-text">2048</span>
         </button>
       </div>
 
@@ -94,6 +104,26 @@ const handleTabChange = (tabName) => {
             </div>
             <div className="game-embed">
               <SnakeGame />
+            </div>
+          </div>
+        )}
+
+        {activeTab === '2048' && (
+          <div className="tab-panel">
+            <div className="game-info-compact">
+              <p className="game-description-compact">
+                Combine tiles to reach 2048! Swipe or use arrow keys to move tiles.
+              </p>
+              <div className="game-meta">
+                <span className="difficulty-badge">Difficulty: Hard</span>
+                <div className="tech-tags-compact">
+                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">Game Logic</span>
+                </div>
+              </div>
+            </div>
+            <div className="game-embed">
+              <Game2048 />
             </div>
           </div>
         )}

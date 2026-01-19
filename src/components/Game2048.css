@@ -1,0 +1,305 @@
+.game2048-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+  
+  .game2048-container {
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .game2048-board {
+    position: relative;
+    background: rgba(91, 155, 213, 0.15);
+    border-radius: 12px;
+    padding: 8px;
+    margin-bottom: 1.5rem;
+    touch-action: none;
+    user-select: none;
+  }
+  
+  .game2048-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .game2048-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .game2048-cell {
+    width: 75px;
+    height: 75px;
+    background: white;
+    border: 1px solid rgba(91, 155, 213, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  [data-theme="dark"] .game2048-cell {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+  }
+  
+  .game2048-cell.tile-empty {
+    background: rgba(91, 155, 213, 0.05);
+    border: 2px dashed rgba(91, 155, 213, 0.2);
+  }
+  
+  .game2048-cell:not(.tile-empty) {
+    animation: tileAppear 0.2s ease;
+  }
+  
+  @keyframes tileAppear {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Tile Colors - Blue Theme */
+  .game2048-cell[data-value="2"] {
+    background: #E3F2FD;
+    color: #5B9BD5;
+  }
+  
+  .game2048-cell[data-value="4"] {
+    background: #BBDEFB;
+    color: #5B9BD5;
+  }
+  
+  .game2048-cell[data-value="8"] {
+    background: #90CAF9;
+    color: white;
+    font-size: 1.75rem;
+  }
+  
+  .game2048-cell[data-value="16"] {
+    background: #64B5F6;
+    color: white;
+    font-size: 1.75rem;
+  }
+  
+  .game2048-cell[data-value="32"] {
+    background: #5B9BD5;
+    color: white;
+    font-size: 1.75rem;
+  }
+  
+  .game2048-cell[data-value="64"] {
+    background: #4A8BC4;
+    color: white;
+    font-size: 1.75rem;
+  }
+  
+  .game2048-cell[data-value="128"] {
+    background: #3A7AB3;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 0 15px rgba(91, 155, 213, 0.4);
+  }
+  
+  .game2048-cell[data-value="256"] {
+    background: #2E6BA2;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 0 15px rgba(91, 155, 213, 0.4);
+  }
+  
+  .game2048-cell[data-value="512"] {
+    background: #235A91;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(91, 155, 213, 0.5);
+  }
+  
+  .game2048-cell[data-value="1024"] {
+    background: #1A4A7F;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 0 25px rgba(91, 155, 213, 0.6);
+  }
+  
+  .game2048-cell[data-value="2048"] {
+    background: linear-gradient(135deg, #5B9BD5, #93C5FD);
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 0 30px rgba(91, 155, 213, 0.8);
+  }
+  
+  .game2048-cell[data-value="4096"] {
+    background: #0D3A6E;
+    color: white;
+    font-size: 1.1rem;
+  }
+  
+  .game2048-cell[data-value="8192"] {
+    background: #072A5C;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  /* Overlay */
+  .game2048-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    animation: overlayFadeIn 0.3s ease;
+  }
+  
+  [data-theme="dark"] .game2048-overlay {
+    background: rgba(15, 23, 42, 0.95);
+  }
+  
+  .game2048-overlay.win {
+    background: rgba(91, 155, 213, 0.95);
+  }
+  
+  [data-theme="dark"] .game2048-overlay.win {
+    background: rgba(91, 155, 213, 0.95);
+  }
+  
+  @keyframes overlayFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .overlay-content {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .overlay-content h3 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .game2048-overlay.win h3 {
+    color: white;
+  }
+  
+  .final-score,
+  .win-message {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  
+  .game2048-overlay.win .win-message {
+    color: white;
+  }
+  
+  .new-record {
+    color: #10b981;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .restart-btn,
+  .continue-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+  }
+  
+  .restart-btn:hover,
+  .continue-btn:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+  }
+  
+  .win-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  
+  .continue-btn {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+  
+  .continue-btn:hover {
+    background: var(--bg-light);
+  }
+  
+  /* Responsive */
+  @media (max-width: 500px) {
+    .game2048-board {
+      padding: 6px;
+    }
+  
+    .game2048-row {
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+  
+    .game2048-cell {
+      width: 65px;
+      height: 65px;
+      font-size: 1.5rem;
+    }
+  
+    .game2048-cell[data-value="128"],
+    .game2048-cell[data-value="256"],
+    .game2048-cell[data-value="512"] {
+      font-size: 1.25rem;
+    }
+  
+    .game2048-cell[data-value="1024"],
+    .game2048-cell[data-value="2048"] {
+      font-size: 1.1rem;
+    }
+  
+    .game2048-cell[data-value="4096"],
+    .game2048-cell[data-value="8192"] {
+      font-size: 0.95rem;
+    }
+  
+    .overlay-content h3 {
+      font-size: 1.5rem;
+    }
+  
+    .final-score,
+    .win-message {
+      font-size: 1rem;
+    }
+  }
+  
+  .stat-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

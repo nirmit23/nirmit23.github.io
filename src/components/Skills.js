@@ -1,5 +1,6 @@
 import React from 'react';
 import { Globe, Settings, Smartphone, Cloud, Code2, Wrench } from 'lucide-react';
+import ScrollFade from './ScrollFade';
 
 const skillsData = [
   {
@@ -86,33 +87,42 @@ export default function Skills() {
   return (
     <section id="skills" className="skills">
       <div className="section-container">
-        <h2>Skills & Technologies</h2>
+        <ScrollFade direction="up" duration={0.5}>
+          <h2>Skills & Technologies</h2>
+        </ScrollFade>
 
         <div className="skills-grid">
           {skillsData.map((category, i) => {
             const Icon = category.IconComponent;
             return (
-              <div key={i} className="skill-category">
-                <div className="skill-header">
-                  <Icon className="skill-icon-svg" size={24} />
-                  <h3 className="skill-title">{category.title}</h3>
+              <ScrollFade 
+                key={i} 
+                direction="up" 
+                delay={60 + (i * 80)}
+                duration={0.5}
+              >
+                <div className="skill-category">
+                  <div className="skill-header">
+                    <Icon className="skill-icon-svg" size={24} />
+                    <h3 className="skill-title">{category.title}</h3>
+                  </div>
+                  <div className="skill-items">
+                    {category.skills.map((skill, j) => (
+                      <div key={j} className="skill-item-with-logo">
+                        <img 
+                          src={skill.logo} 
+                          alt={skill.name}
+                          className="skill-logo"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                          }}
+                        />
+                        <span>{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="skill-items">
-                  {category.skills.map((skill, j) => (
-                    <div key={j} className="skill-item-with-logo">
-                      <img 
-                        src={skill.logo} 
-                        alt={skill.name}
-                        className="skill-logo"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                        }}
-                      />
-                      <span>{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              </ScrollFade>
             );
           })}
         </div>
