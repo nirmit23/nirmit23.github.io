@@ -85,7 +85,7 @@ export default function Hero({ scrollToSection }) {
             scrollToSection("projects");
           }}
         >
-          Explore My Work →
+          Explore My Work 
         </a>
       </div>
     </section>
