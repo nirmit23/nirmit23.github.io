@@ -1,0 +1,29 @@
+Given a string s, return true if the s can be palindrome after
+ deleting/skipping at most one character from it.
+
+ function validpalindrom(s) {
+
+    let left = 0;
+    let right = s.length - 1;
+
+    while (left < right) {
+        if (s{left} === s[right]) {
+            left ++;
+            right --;
+        } {
+
+        } return (
+            ispalindromrange(s, left +1, right) ||
+            ispalindromrange (s, length, right -1)
+        )
+    }  
+ }
+ function ispalindromrange (s, left, right) {
+    while(left < right) {
+        if (s[left] ! == s[right]) return false;
+        left++;
+        right --;
+    } return true
+ }
+
+ 123214
